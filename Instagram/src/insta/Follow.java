@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class InstaFollow {
+public class Follow {
 	static {
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe") ;
 	}

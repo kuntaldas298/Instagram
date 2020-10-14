@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class InstaUnfollow {
+public class FollowFromProfile {
 	static {
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe") ;
 	}
@@ -16,18 +16,19 @@ public class InstaUnfollow {
 		//credentials
 		String username="kuntal7875";
 		String password="kuntal123";
-
+		String NameOfProfile="arianagrande";
+		
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.instagram.com/accounts/login/?hl=en");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+		
 		//login
 		driver.findElement(By.xpath("//input[@aria-label='Phone number, username, or email']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@aria-label='Password']")).sendKeys(password);
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		String title = driver.getTitle();
 		for(int i=0;i<2;i++) {
 			if(title.equalsIgnoreCase("Instagram")) {
@@ -36,28 +37,13 @@ public class InstaUnfollow {
 			}
 		}
 
-		//go to profile
-		driver.findElement(By.xpath("//div[@class='MWDvN  nfCOa']/div[3]/div/div[5]//img[@data-testid='user-avatar']")).click();
-		driver.findElement(By.xpath("//a[@class='-qQT3']/div[.='Profile']")).click();
-
-		driver.findElement(By.xpath("(//span[@class='g47SY '])[3]")).click();
-
-		//unfollow
-		Thread.sleep(3000);
-		List<WebElement> unfollow = driver.findElements(By.xpath("//li[@class='wo9IH']/div/div[2]/button[.='Following']"));
-		int x = unfollow.size();
-		System.out.println(x+" people were following you.");
-		for(WebElement uf:unfollow) {
-			Thread.sleep(2000);
-			uf.click();
-			driver.findElement(By.xpath("//button[.='Unfollow']")).click();
-		}
-		driver.findElement(By.xpath("(//div[@class='QBdPU '])[2]")).click();
-
+		//search bar
+		driver.findElement(By.xpath("//div[@class='MWDvN  nfCOa']/div[2]/input")).sendKeys(NameOfProfile);
+		
 		//logout
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//div[@class='MWDvN  nfCOa']/div[3]/div/div[5]//img[@data-testid='user-avatar']")).click();
-		driver.findElement(By.xpath("//div[@class='-qQT3']/div[.='Log Out']")).click();
-		driver.close();
+//		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//div[@class='MWDvN buoMu nfCOa']/div[3]//img[@data-testid='user-avatar']")).click();
+//		driver.findElement(By.xpath("//div[@class='-qQT3']/div[.='Log Out']")).click();
+//		driver.close();
 	}
 }
