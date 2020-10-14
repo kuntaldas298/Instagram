@@ -40,6 +40,9 @@ public class FollowFromProfile {
 		//search bar
 		driver.findElement(By.xpath("//div[@class='MWDvN  nfCOa']/div[2]/input")).sendKeys(NameOfProfile);
 		
+		//click on profile
+		driver.findElement(By.xpath("(//div[@class='fuqBx']/a)[1]")).click();
+		
 		//logout
 //		Thread.sleep(3000);
 //		driver.findElement(By.xpath("//div[@class='MWDvN buoMu nfCOa']/div[3]//img[@data-testid='user-avatar']")).click();
