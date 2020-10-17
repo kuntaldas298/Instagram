@@ -17,11 +17,13 @@ public class Follow {
 		//credentials
 		String username="kuntal7875";
 		String password="kuntal123";
+		
+		String url="https://www.instagram.com/?hl=en";
 
 		WebDriver driver=new ChromeDriver();	//open browser
 		driver.manage().window().maximize();	//maximize window
 		
-		driver.get("https://www.instagram.com/accounts/login/?hl=en");	//website
+		driver.get(url);	//website
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	//wait
 

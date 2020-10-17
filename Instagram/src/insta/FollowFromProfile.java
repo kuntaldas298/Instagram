@@ -16,12 +16,14 @@ public class FollowFromProfile {
 		//credentials
 		String username="kuntal7875";
 		String password="kuntal123";
+		
+		String url="https://www.instagram.com/?hl=en";
 
 		String NameOfProfile="technicalguruji";
 
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://www.instagram.com/accounts/login/?hl=en");
+		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		//login

@@ -16,6 +16,7 @@ public class Unfollow {
 		//credentials
 		String username="kuntal7875";
 		String password="kuntal123";
+		
 		String url="https://www.instagram.com/?hl=en";
 		
 		int unfollowCounter = 0;
