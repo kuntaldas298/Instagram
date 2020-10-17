@@ -16,10 +16,13 @@ public class Unfollow {
 		//credentials
 		String username="kuntal7875";
 		String password="kuntal123";
+		String url="https://www.instagram.com/?hl=en";
+		
+		int unfollowCounter = 0;
 
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://www.instagram.com/accounts/login/?hl=en");
+		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		//login
@@ -44,18 +47,29 @@ public class Unfollow {
 
 		//unfollow
 		Thread.sleep(3000);
-		List<WebElement> unfollow = driver.findElements(By.xpath("//li[@class='wo9IH']/div/div[2]/button[.='Following']"));
-		int x = unfollow.size();
-		System.out.println(x+" people were following you.");
+		 List<WebElement> unfollow = driver.findElements(By.xpath("//li[@class='wo9IH']/div/div[2]/button[.='Following']"));
+//		int x = unfollow.size();
+//		System.out.println(x+" total people following you.");
+//		for(int i=x;i>=10;i--) {
+//			WebElement uf=unfollow.get(i);
+//			Thread.sleep(2000);
+//			uf.click();
+//			driver.findElement(By.xpath("//button[.='Unfollow']")).click();
+//			unfollowCounter++;
+//		}
+		
 		for(WebElement uf:unfollow) {
 			Thread.sleep(2000);
 			uf.click();
 			driver.findElement(By.xpath("//button[.='Unfollow']")).click();
+			unfollowCounter++;
 		}
-		driver.findElement(By.xpath("(//div[@class='QBdPU '])[2]")).click();
+		System.out.println(unfollowCounter+" were unfollowed.");
+		
+		driver.findElement(By.xpath("(//div[@class='QBdPU '])[2]")).click();//click on close
 
 		//logout
-		Thread.sleep(3000);
+		driver.findElement(By.xpath("//div[@class='MWDvN buoMu nfCOa']/div[1]/a")).click();	//go to homepage
 		driver.findElement(By.xpath("//div[@class='MWDvN  nfCOa']/div[3]/div/div[5]//img[@data-testid='user-avatar']")).click();
 		driver.findElement(By.xpath("//div[@class='-qQT3']/div[.='Log Out']")).click();
 		driver.close();
